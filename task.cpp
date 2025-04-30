@@ -11,8 +11,6 @@ void printElem(int elem)
 }
 
 // Exercise 1 function 
-// Заменить все простые числа на х.
-
 bool ex1IsPrime(int n)
 {
     if (n <= 1)
@@ -52,25 +50,20 @@ void ex1(std::vector<int> v)
 
 
 // Exercise 2 function
-// Удалить из массива каждый k-й по счету элемент.
-// bool ex2RemoveEl()
-// {
-//     if 
-// }
+void ex2(std::vector<int> v)
+{
+    int k;
+    std::cout << "Input k: ";
+    std::cin >> k;
 
+    int count = 0;
+    auto new_end = std::remove_if(v.begin(), v.end(), 
+    [k, &count](int i) {count++;  return count % k == 0; });
 
+    v.erase(new_end, v.end());
 
-// void ex2(std::vector<int> v)
-// {
-//     int k;
-//     std::cout << "Input k: ";
-//     std::cin >> k;
-
-//     std::vector<int>::iterator iter = v.begin();
-//     // std::remove_if(v.begin(), v.end(), iter == k);
-
-//     std::for_each(v.begin(), v.end(), printElem);
-// }
+    std::for_each(v.begin(), v.end(), printElem);
+}
 
 
 int main()
@@ -82,7 +75,7 @@ int main()
     ex1(v);
 
     // Exercise 2
-    // ex2(v);
+    ex2(v);
 
     return 0;
 }
