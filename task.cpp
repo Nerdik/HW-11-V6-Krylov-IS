@@ -33,7 +33,7 @@ void ex1(std::vector<int>& v)
 
 
 // Exercise 2 function
-void ex2(std::vector<int> v)
+void ex2(std::vector<int>& v)
 {
     int k;
     std::cout << "Input k: ";
