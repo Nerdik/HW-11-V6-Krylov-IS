@@ -11,39 +11,22 @@ void printElem(int elem)
 }
 
 // Exercise 1 function 
-bool ex1IsPrime(int n)
-{
-    if (n <= 1)
-    {
-        return false;
-    }
-    if (n == 2)
-    {
-        return true;
-    }
-    if (n % 2 == 0)
-    {
-        return false;
-    }
-
-    for (int i = 3; i * i <= n; ++i)
-    {
-        if (n % i == 0)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-
-void ex1(std::vector<int> v)
+void ex1(std::vector<int>& v)
 {
     int x;
     std::cout << "Input x: ";
     std::cin >> x;
 
-    std::replace_if(v.begin(), v.end(), ex1IsPrime, x);
+    std::replace_if(v.begin(), v.end(), [](int n)
+    {
+        if (n <= 1) return false;
+        for (int i = 2; i * i <= n; i += 2)
+        {
+            if (n % i == 0) return false;
+        }
+        return true;
+    },
+    x);
 
     std::for_each(v.begin(), v.end(), printElem);
 }
